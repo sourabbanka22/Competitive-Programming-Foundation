@@ -8,7 +8,7 @@ class Trie:
         self.endSymbol = "*"
         self.populateSuffixTrieFrom(string)
 
-    def populateSuffixTrieFrom(self, string):
+    def populateTrieFrom(self, string):
         # Write your code here.
 		current = self.root
         for char in string:
