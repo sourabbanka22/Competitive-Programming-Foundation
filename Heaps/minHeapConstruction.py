@@ -1,6 +1,3 @@
-# Do not edit the class below except for the buildHeap,
-# siftDown, siftUp, peek, remove, and insert methods.
-# Feel free to add new properties and methods to the class.
 class MinHeap:
     def __init__(self, array):
         # Do not edit the line below.
@@ -10,8 +7,7 @@ class MinHeap:
         # Write your code here.
         startIdx = (len(array) - 2)//2
         for index in reversed(range(startIdx+1)):
-            self.siftDown(index, len(array) - 1, array)
-        
+            self.siftDown(index, len(array) - 1, array) 
         return array
 
     def siftDown(self, startIdx, endIdx, array):
@@ -25,7 +21,7 @@ class MinHeap:
             else:
                 swapIndex = firstChild
             if array[swapIndex] < array[startIdx]:
-                array[startIdx], array[swapIndex] = array[swapIndex], array[startIdx]
+				self.swap(startIdx, swapIndex, array)
                 startIdx = swapIndex
                 firstChild = startIdx*2 + 1
             else:
@@ -36,7 +32,7 @@ class MinHeap:
         # Write your code here.
         parnetIdx = (index-1)//2
         while index>0 and self.heap[index] < self.heap[parnetIdx]:
-            self.swap(index, parnetIdx)
+            self.swap(index, parnetIdx, self.heap)
             index = parnetIdx
             parnetIdx = (index-1)//2
 
@@ -47,7 +43,7 @@ class MinHeap:
 
     def remove(self):
         # Write your code here.
-        self.swap(0, len(self.heap)-1)
+        self.swap(0, len(self.heap)-1, self.heap)
         last = self.heap.pop()
         self.siftDown(0, len(self.heap)-1, self.heap)
         return last
@@ -56,10 +52,13 @@ class MinHeap:
         # Write your code here.
         self.heap.append(value)
         self.siftUp(len(self.heap)-1)
- 
-    def swap(self, first, second):
-        self.heap[first], self.heap[second] = self.heap[second], self.heap[first]
+
+    def swap(self, first, second, array):
+        array[first], array[second] = array[second], array[first]
     
+    def isEmpty(self):
+        return len(self.heap) == 0
+
     def returnHeap(self):
         return self.heap
 
