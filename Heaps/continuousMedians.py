@@ -4,11 +4,40 @@
 class ContinuousMedianHandler:
     def __init__(self):
         # Write your code here.
+        self.minHeap = MinHeap([])
+        self.maxHeap = MaxHeap([])
         self.median = None
 
     def insert(self, number):
         # Write your code here.
-        pass
+        
+        if self.maxHeap.isEmpty():
+            self.maxHeap.insert(number)
+        elif number < self.maxHeap.peek(): 
+            self.maxHeap.insert(number)
+        else: 
+            self.minHeap.insert(number)
+
+        minLen = len(self.minHeap.returnHeap())
+        maxLen = len(self.maxHeap.returnHeap())
+        if minLen - maxLen == 2:
+            poppedValue = self.minHeap.remove()
+            self.maxHeap.insert(poppedValue)
+        elif minLen - maxLen == -2:
+            poppedValue = self.maxHeap.remove()
+            self.minHeap.insert(poppedValue)
+
+        median = 0
+        minLen = len(self.minHeap.returnHeap())
+        maxLen = len(self.maxHeap.returnHeap())
+        if (minLen + maxLen) % 2 == 0:
+            median = (self.minHeap.peek() + self.maxHeap.peek()) / 2
+        elif minLen > maxLen:
+            median = self.minHeap.peek()
+        else:
+            median = self.maxHeap.peek()
+
+        self.median = median
 
     def getMedian(self):
         return self.median
@@ -36,12 +65,11 @@ class MinHeap:
             else:
                 swapIndex = firstChild
             if array[swapIndex] < array[startIdx]:
-				self.swap(startIdx, swapIndex, array)
+                self.swap(startIdx, swapIndex, array)
                 startIdx = swapIndex
                 firstChild = startIdx*2 + 1
             else:
-                break
-            
+                break  
 
     def siftUp(self, index):
         # Write your code here.
@@ -50,7 +78,6 @@ class MinHeap:
             self.swap(index, parnetIdx, self.heap)
             index = parnetIdx
             parnetIdx = (index-1)//2
-
 
     def peek(self):
         # Write your code here.
@@ -100,7 +127,7 @@ class MaxHeap:
             else:
                 swapIndex = firstChild
             if array[swapIndex] > array[startIdx]:
-				self.swap(startIdx, swapIndex, array)
+                self.swap(startIdx, swapIndex, array)
                 startIdx = swapIndex
                 firstChild = startIdx*2 + 1
             else:
@@ -113,7 +140,6 @@ class MaxHeap:
             self.swap(index, parnetIdx, self.heap)
             index = parnetIdx
             parnetIdx = (index-1)//2
-
 
     def peek(self):
         # Write your code here.
@@ -139,3 +165,11 @@ class MaxHeap:
 
     def returnHeap(self):
         return self.heap
+
+cMH = ContinuousMedianHandler()
+cMH.insert(5)
+print(cMH.getMedian())
+cMH.insert(10)
+print(cMH.getMedian())
+cMH.insert(100)
+print(cMH.getMedian())
