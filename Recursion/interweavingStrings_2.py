@@ -4,7 +4,10 @@ def interweavingStrings(one, two, three):
         return False
     
     memo = [[None for col in range(len(two)+1)] for row in range(len(one)+1)]
-    return interweavingStringsUtil(0, 0, one, two, three, memo)
+    result = interweavingStringsUtil(0, 0, one, two, three, memo)
+    for row in memo:
+        print(row)
+    return result
 
 def interweavingStringsUtil(idxOne, idxTwo, one, two, three, memo):
     if memo[idxOne][idxTwo]:
@@ -13,7 +16,7 @@ def interweavingStringsUtil(idxOne, idxTwo, one, two, three, memo):
     idxThree = idxOne + idxTwo
     if idxThree == len(three):
         return True
-    
+    #print("One: "+ one[:idxOne+1] + " Two: "+ two[:idxTwo+1])
     if idxOne<len(one) and one[idxOne] == three[idxThree]:
         memo[idxOne+1][idxTwo] = interweavingStringsUtil(idxOne+1, idxTwo, one, two, three, memo)
         if memo[idxOne+1][idxTwo]:
@@ -26,6 +29,10 @@ def interweavingStringsUtil(idxOne, idxTwo, one, two, three, memo):
     memo[idxOne][idxTwo] = False
     return False
 
-print(interweavingStrings("algoexpert", "your-dream-job", "your-algodream-expertjob"))
+# print(interweavingStrings("algoexpert", "your-dream-job", "your-algodream-expertjob"))
 
-print(interweavingStrings("aabcc", "dbbca", "aadbbcbcac"))
+# print(interweavingStrings("aabcc", "dbbca", "aadbbcbcac"))
+
+#print(interweavingStrings("aaa", "aaab", "aaabaaa"))
+
+print(interweavingStrings("aaab", "aaaaa", "aaaaaaaab"))

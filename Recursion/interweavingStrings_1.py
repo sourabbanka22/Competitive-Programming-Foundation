@@ -6,6 +6,8 @@ def interweavingStrings(one, two, three):
     return interweavingStringsUtil(0, 0, one, two, three)
 
 def interweavingStringsUtil(idxOne, idxTwo, one, two, three):
+
+    #print("One: "+ one[:idxOne+1] + " Two: "+ two[:idxTwo+1])
     idxThree = idxOne + idxTwo
     if idxThree == len(three):
         return True
@@ -19,6 +21,10 @@ def interweavingStringsUtil(idxOne, idxTwo, one, two, three):
     
     return False
 
-print(interweavingStrings("algoexpert", "your-dream-job", "your-algodream-expertjob"))
+# print(interweavingStrings("algoexpert", "your-dream-job", "your-algodream-expertjob"))
 
-print(interweavingStrings("aabcc", "dbbca", "aadbbcbcac"))
+# print(interweavingStrings("aabcc", "dbbca", "aadbbcbcac"))
+
+#print(interweavingStrings("aaa", "aaab", "aaabaaa"))
+
+print(interweavingStrings("aaab", "aaaaa", "aaaaaaaab"))
