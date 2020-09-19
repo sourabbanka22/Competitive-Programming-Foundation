@@ -1,21 +1,15 @@
 def nthCatalan(n):
     # Write your code here.
-    memo = [None for val in range(n+1)]
-    memo[0] = 1
-    return nthCatalanUtil(n, memo)
+    memo = [1]
 
-def nthCatalanUtil(n, memo):
-    if memo[n] is not None:
-        # print("Cheers to Memorization")
-        return memo[n]
-    
-    numOfTrees = 0
-    for left in range(n):
-        right = n-1-left
-        numOfLeftTrees = nthCatalanUtil(left)
-        numOfRightTrees = nthCatalanUtil(right)
-        numOfTrees += numOfLeftTrees*numOfRightTrees
-    memo[n] = numOfTrees
-    return numOfTrees
+    for right in range(1, n+1):
+        nth = 0
+        for left in range(right):
+            i = memo[left]
+            j = memo[right-1-left]
+            nth += i*j
+        memo.append(nth)
+        
+    return memo[n]
 
-print(nthCatalan(4))
+print(nthCatalan(5))
