@@ -10,18 +10,14 @@ def longestPeak(array):
     for index in range(1, len(array)):
         if array[index] > array[index-1]:
             left[index] = left[index-1]+1
-        else:
-            left[index] = 0
     
     for index in reversed(range(len(array)-1)):
         if array[index] > array[index+1]:
             right[index] = right[index+1]+1
-        else:
-            right[index] = 0
     
     for index in range(len(array)):
         if left[index]==0 or right[index]==0:
-            result[index] = 0
+            continue
         else:
             result[index] = left[index]+right[index] + 1
     
