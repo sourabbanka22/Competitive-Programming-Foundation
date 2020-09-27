@@ -1,5 +1,4 @@
 def rectangleOfZeroes(matrix):
-    # Write your code here.
     for row in range(len(matrix)):
         for col in range(len(matrix[0])):
             for lowestRow in range(row+1, len(matrix)):
