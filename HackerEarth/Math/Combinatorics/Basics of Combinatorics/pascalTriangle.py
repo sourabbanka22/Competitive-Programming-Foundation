@@ -9,5 +9,4 @@ def pascalTriangle(lastRow):
 
     return matrix
 
-
 print(pascalTriangle(5))
