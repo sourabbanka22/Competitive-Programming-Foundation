@@ -4,7 +4,6 @@ def dotProduct(A, B, C, D):
     ab[1] = B[1]-A[1]
     cd[0] = D[0]-C[0]
     cd[1] = D[1]-C[1]
-    print(ab, cd)
 
     return ab[0]*cd[1] - ab[1]*cd[0]
 
