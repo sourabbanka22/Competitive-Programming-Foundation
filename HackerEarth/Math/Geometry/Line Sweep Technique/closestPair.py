@@ -4,7 +4,7 @@ def convertToString(point):
     return str(point[0])+" "+str(point[1])
 
 def convertToPoint(string):
-    a, b = map(int, string.split(" "))
+    a, b = map(float, string.split(" "))
     return [a, b]
 
 def findDistance(point1, point2):
@@ -15,31 +15,36 @@ def findDistance(point1, point2):
 def closestPair(points):
     n = len(points)
 
+    bestPair = []
     points.sort(key = lambda x:x[0])
     best = float("inf")
     box = set()
     box.add(convertToString(points[0]))
     
     for idx in range(1, n):
-        
+
         toRemove = []
-        toAdd = []
         for pointString in box:
             point = convertToPoint(pointString)
-            distance = findDistance(point, points[idx])
-            if distance<best:
-                best = distance
-                toAdd.append(pointString)
-            else:
-                toRemove.append(pointString)
+            if point[0]>=points[idx][0]-best and (point[1]>=points[idx][1]-best or point[1]<=points[idx][1]+best):
+                continue
+            toRemove.append(pointString)
         
-        for val in toRemove:
-            box.remove(val)
+        for pnt in toRemove:
+            box.discard(pnt)
         
-        for val in toAdd:
-            box.add(val)
-    
-    return best
+        for pointString in box:
+            point = convertToPoint(pointString)
+            currentDistance = findDistance(point, points[idx])
+            if currentDistance<best:
+                best = currentDistance
+                bestPair = [point, points[idx]]
+        box.add(convertToString(points[idx]))
+            
+    return (best, bestPair)
 
 points = [[0, 5], [5, 1], [2, 3], [4, 2]]
-print(closestPair(points))
+points2 = [[2, 3], [12, 30], [40, 50], [5, 1], [12, 10], [3, 4]]
+points3 = [[1, 496.5], [12,30], [40, 50], [5, 1], [12, 10], [3,4], [1, 496], [1, 497]]
+points4 = [[0,0], [-2,0], [4,0], [1,1], [3,3], [-2,2], [5,2]]
+print("nlogn", closestPair(points4))
