@@ -19,5 +19,3 @@ def naiveClosestPair(points):
 
 points = [[0, 5], [5, 1], [2, 3], [4, 2]]
 print("n^2", naiveClosestPair(points))
-print("")
-print(closestPair(points))
