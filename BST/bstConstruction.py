@@ -84,30 +84,30 @@ class BST:
 
 		return array
 
-# root = BST(50)
-# root.insert(30) 
-# root.insert(20) 
-# root.insert(40) 
-# root.insert(70) 
-# root.insert(60) 
-# root.insert(80)
+root = BST(50)
+root.insert(30) 
+root.insert(20) 
+root.insert(40) 
+root.insert(70) 
+root.insert(60) 
+root.insert(80)
 
-# print(root.inOrder())
+print(root.inOrder())
 
-# print ("Delete 20")
-# root.remove(20)
-# print("inOrder traversal of the modified tree")
-# print(root.inOrder())
+print ("Delete 20")
+root.remove(20)
+print("inOrder traversal of the modified tree")
+print(root.inOrder())
   
-# print("Delete 30")
-# root.remove(30) 
-# print("inOrder traversal of the modified tree")
-# print(root.inOrder())
+print("Delete 30")
+root.remove(30) 
+print("inOrder traversal of the modified tree")
+print(root.inOrder())
   
-# print("Delete 50")
-# root.remove(50)
-# print("inOrder traversal of the modified tree")
-# print(root.inOrder())
+print("Delete 50")
+root.remove(50)
+print("inOrder traversal of the modified tree")
+print(root.inOrder())
 
 
 root = BST(1)
