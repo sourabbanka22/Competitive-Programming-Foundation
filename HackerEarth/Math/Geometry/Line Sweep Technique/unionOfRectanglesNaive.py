@@ -2,7 +2,6 @@ def getArea(width, openIntervals):
 
     area = 0
     previousY = float("-inf")
-    print(openIntervals)
     for bottomY, topY in openIntervals:
         previousY = max(previousY, bottomY)
         area += max(0, (topY - previousY) * width)
