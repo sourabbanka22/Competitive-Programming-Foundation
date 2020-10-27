@@ -2,6 +2,7 @@ def getArea(width, openIntervals):
 
     area = 0
     previousY = float("-inf")
+    print(openIntervals)
     for bottomY, topY in openIntervals:
         previousY = max(previousY, bottomY)
         area += max(0, (topY - previousY) * width)
@@ -36,8 +37,8 @@ def unionOfRectangles(rectangles):
 numOfRectangles = int(input())
 rectangles = []
 
-for _ in range(numOfRectangles):
-    x1, y1, x2, y2 = map(int, input().split())
-    rectangles.append([x1, y1, x2, y2])
-
+# for _ in range(numOfRectangles):
+#     x1, y1, x2, y2 = map(int, input().split())
+#     rectangles.append([x1, y1, x2, y2])
+rectangles = [[2, 1, 4, 2], [2, 3, 4, 5], [1, 4, 3, 6]]
 print(unionOfRectangles(rectangles))

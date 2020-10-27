@@ -39,7 +39,7 @@ class BST:
 				parentNode = currentNode
 				currentNode = currentNode.left
 			elif value > currentNode.value:
-				paretNode = currentNode
+				parentNode = currentNode
 				currentNode = currentNode.right
 			else:
 				if currentNode.left is not None and currentNode.right is not None:
@@ -61,6 +61,7 @@ class BST:
 				elif parentNode.right == currentNode:
 					parentNode.right = currentNode.left if currentNode.left is not None else currentNode.right
 				break
+		
 		return self
 
 	def getMinValue(self):
@@ -70,44 +71,43 @@ class BST:
 		return currentNode.value
 	
 	def inOrder(self):
-		array = []
-		return self.inOrderUtil(array)
+		return self.inOrderUtil([])
 
 	def inOrderUtil(self, array):
-		if self == None:
+		if self is None:
 			return
-		if self.left != None:
+		if self.left is not None:
 			self.left.inOrderUtil(array)
 		array.append(self.value)
-		if self.right != None:
+		if self.right is not None:
 			self.right.inOrderUtil(array)
 
 		return array
 
-root = BST(50)
-root.insert(30) 
-root.insert(20) 
-root.insert(40) 
-root.insert(70) 
-root.insert(60) 
-root.insert(80)
+# root = BST(50)
+# root.insert(30) 
+# root.insert(20) 
+# root.insert(40) 
+# root.insert(70) 
+# root.insert(60) 
+# root.insert(80)
 
-print(root.inOrder())
+# print(root.inOrder())
 
-print ("Delete 20")
-root.remove(20)
-print("inOrder traversal of the modified tree")
-print(root.inOrder())
+# print ("Delete 20")
+# root.remove(20)
+# print("inOrder traversal of the modified tree")
+# print(root.inOrder())
   
-print("Delete 30")
-root.remove(30) 
-print("inOrder traversal of the modified tree")
-print(root.inOrder())
+# print("Delete 30")
+# root.remove(30) 
+# print("inOrder traversal of the modified tree")
+# print(root.inOrder())
   
-print("Delete 50")
-root.remove(50)
-print("inOrder traversal of the modified tree")
-print(root.inOrder())
+# print("Delete 50")
+# root.remove(50)
+# print("inOrder traversal of the modified tree")
+# print(root.inOrder())
 
 
 root = BST(1)
