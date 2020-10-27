@@ -128,7 +128,7 @@ class BST:
 
 numOfRectangles = int(input())
 rectangles = []
-print(numOfRectangles)
+
 for _ in range(numOfRectangles):
     x1, y1, x2, y2 = map(int, input().split())
     rectangles.append([x1, y1, x2, y2])
